@@ -1,13 +1,5 @@
-import os
 import random
 import time
-
-
-def clear():
-	command = "clear"
-	if os.name in ("nt", "dos"):
-		command = "cls"
-		os.system(command)
 
 
 class game2:
@@ -33,7 +25,9 @@ class game2:
 	def play(self, game, bit1, bit2):
 		return self.data[game][bit1][bit2]
 
+
 g2 = game2();
+
 
 class mesh:
 	bit = []
@@ -91,11 +85,10 @@ class mist:
 
 
 m = mist()
-for i in range(1000):
-	clear()
+while True:
 	m.play()
 	m.print()
-	time.sleep(1 / 24)
+	time.sleep(1 / 8)
 
 
 # mob

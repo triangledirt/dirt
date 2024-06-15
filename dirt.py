@@ -1,5 +1,10 @@
+import console
 import random
 import time
+
+
+def clear():
+	console.clear()
 
 
 class game2:
@@ -36,6 +41,14 @@ class mesh:
 		for i in range(16):
 			self.bit.append(random.randrange(2))
 
+	def face(self):
+		value = 1
+		face = 97
+		for place in range(4):
+			face += self.bits[place] * value
+			value *= 2
+		return face
+
 	def mutate(self):
 		self.bit[random.randrange(16)] = random.randrange(2)
 
@@ -48,7 +61,7 @@ class mesh:
 		in2 = other.bit[inaddr2]
 		out = g2.play(game, in1, in2)
 		other.bit[outaddr] = out
-		
+
 	def print(self):
 		for i in range(16):
 			print(self.bit[i], end="")
@@ -56,8 +69,9 @@ class mesh:
 		print()
 
 
-# m = mesh()
-# m.print()
+if False:
+	m = mesh()
+	m.print()
 
 
 class mist:
@@ -84,11 +98,56 @@ class mist:
 			mesh.print()
 
 
-m = mist()
-while True:
-	m.play()
-	m.print()
-	time.sleep(1 / 8)
+if True:
+	m = mist()
+	while True:
+		m.play()
+		clear()
+		m.print()
+		time.sleep(1 / 8)
 
 
-# mob
+class mob:
+	dim = 8
+	meshes = []
+	focus = []
+
+	def finddatamesh(self, i, j):
+		x, y = xyfromi(focus[i][j])
+		c = wrap(i + x, dim)
+		d = wrap(j + y, dim)
+		return meshes[c][d]
+
+	def play(self):
+		return
+
+	def print(self):
+		return
+
+	def xyfromi(self, i):
+		if 0 == i:
+			return -1, -1
+		elif 1 == i:
+			return 0, -1
+		elif 2 == i:
+			return 1, -1
+		elif 3 == i:
+			return -1, 0
+		elif 4 == i:
+			return 0, 0
+		elif 5 == i:
+			return 1, 0
+		elif 6 == i:
+			return -1, 1
+		elif 7 == i:
+			return 0, 1
+		elif 8 == i:
+			return 1, 1
+
+if False:
+	m = mob()
+	while True:
+		m.play()
+		clear()
+		m.print()
+		time.sleep(1 / 8)
